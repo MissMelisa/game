@@ -8,7 +8,7 @@ const options = [
   {
     id: 0,
     name: "rock",
-    src: "https://www.clipartkey.com/mpngs/m/7-76104_rock-drawing-png-vector-clipart-stone-clipart.png",
+    src: "https://images.vexels.com/media/users/3/145826/isolated/preview/37a6335f8116ec5d233efd8019e2b2c4-round-rock-by-vexels.png",
     alt: "rock",
   },
   {
