@@ -1,0 +1,10 @@
+.imagesContainer {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+}
+.images {
+  width: 200px;
+  height: 350px;
+}
