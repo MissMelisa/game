@@ -94,7 +94,7 @@ function Game() {
         contentLabel="Result"
       >
         <div>
-          <button onClick={closeModal}>close</button>
+          <span className="round">{round}</span>
           {computerChoice && (
             <div className="modalContainer">
               <div>
@@ -116,7 +116,9 @@ function Game() {
               </div>
             </div>
           )}
-          <span className="round">{round}</span>
+        </div>
+        <div className="buttonNewGame">
+          <button onClick={closeModal}>New Game</button>
         </div>
       </Modal>
     </div>
