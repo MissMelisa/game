@@ -44,7 +44,7 @@ function obtainResult(userChoice, computerChoice) {
   }
 }
 
-function Game({ playerNumber }) {
+function Game() {
   const [userChoice, setUserChoice] = useState("");
   const [round, setRound] = useState();
   const [computerChoice, setComputerChoice] = useState();
@@ -66,18 +66,19 @@ function Game({ playerNumber }) {
   }, [userChoice]);
 
   return (
-    <div>
-      <h2>Player {playerNumber}</h2>
+    <div className="containerGame">
+      <h2>Player 1</h2>
       <span>Choose an option</span>
       <div className="imagesContainer">
         {options.map((option) => (
           <Choice
             onClick={() => handleOnClickChoice(option.name)}
-            src={option.src}
-            alt={option.alt}
+            image={option.src}
+            alt={option.name}
           />
         ))}
       </div>
+
       <div>
         {computerChoice && <span>Computer chose: {computerChoice}</span>}
       </div>

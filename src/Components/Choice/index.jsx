@@ -1,9 +1,9 @@
 import "./styles.css";
 
-function Choice({ onClick, src, alt }) {
+function Choice({ onClick, image, alt }) {
   return (
     <div onClick={onClick}>
-      <img className="images" src={src} alt={alt} />
+      <img className="images" src={image} alt={alt} />
     </div>
   );
 }

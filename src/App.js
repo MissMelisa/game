@@ -1,14 +1,21 @@
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import "./App.css";
-import Game from "./Components/Game";
+import GamePage from "./Pages/GamePage";
+import HomePage from "./Pages/HomePage";
 
 function App() {
   return (
-    <div className="App">
-      <h1> Rock, paper, scissor</h1>
-      <div>
-        <Game playerNumber="1" />
-      </div>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <HomePage />
+        </Route>
+        <Route path="/game">
+          <GamePage />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
