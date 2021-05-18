@@ -5,9 +5,17 @@ import "./styles.css";
 function GamePage() {
   return (
     <div className="containerGamePage">
-      <h1> Rock, paper, scissor</h1>
+      <div className="containerHead">
+        <h1> Rock, paper, scissor</h1>
+        <img
+          className="imageLogo"
+          src="https://images-na.ssl-images-amazon.com/images/I/61QkvmvEdVL.png"
+          alt="logo"
+        />
+      </div>
+
       <div>
-        <Game playerNumber="1" />
+        <Game />
       </div>
     </div>
   );

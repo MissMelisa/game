@@ -14,7 +14,7 @@ function HomePage() {
       <img
         className="image"
         alt="logo"
-        src="https://static.vecteezy.com/system/resources/previews/000/693/103/non_2x/rock-paper-scissors-vector-line-icons.jpg"
+        src="https://images-na.ssl-images-amazon.com/images/I/61QkvmvEdVL.png"
       />
       <button className="buttonStart" onClick={handleOnClickRedirect}>
         Start game

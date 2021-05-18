@@ -7,6 +7,10 @@
 .round {
   font-size: 40px;
   font-weight: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
 }
 .containerGame {
   display: flex;
@@ -15,4 +19,15 @@
   justify-content: center;
   border-radius: 16px;
   border: 2px solid #0b0000;
+}
+.modalContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+.imageModal {
+  height: 400px;
+  width: 450px;
 }

@@ -46,7 +46,7 @@ function obtainResult(userChoice, computerChoice) {
 }
 
 function Game() {
-  const [userChoice, setUserChoice] = useState("");
+  const [userChoice, setUserChoice] = useState();
   const [round, setRound] = useState();
   const [computerChoice, setComputerChoice] = useState();
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -59,6 +59,7 @@ function Game() {
   }
   function handleOnClickChoice(choice) {
     setUserChoice(choice);
+
     openModal();
   }
 
@@ -66,7 +67,7 @@ function Game() {
     if (userChoice) {
       const computerNewChoice = getComputerChoice();
       console.log(computerNewChoice);
-      const result = obtainResult(userChoice, computerNewChoice.name);
+      const result = obtainResult(userChoice.name, computerNewChoice.name);
 
       setRound(result);
 
@@ -81,7 +82,7 @@ function Game() {
       <div className="imagesContainer">
         {options.map((option) => (
           <Choice
-            onClick={() => handleOnClickChoice(option.name)}
+            onClick={() => handleOnClickChoice(option)}
             image={option.src}
             alt={option.name}
           />
@@ -95,20 +96,28 @@ function Game() {
         <div>
           <button onClick={closeModal}>close</button>
           {computerChoice && (
-            <div>
+            <div className="modalContainer">
               <div>
-                <span>You chose:{userChoice}</span>
-                {/* <img src={} alt={userChoice} /> */}
+                <span>You chose:{userChoice.name}</span>
+                <img
+                  className="imageModal"
+                  src={userChoice.src}
+                  alt={userChoice.name}
+                />
               </div>
+              <span> VS</span>
               <div>
                 <span>Computer chose: {computerChoice.name}</span>
-                <img src={computerChoice.src} alt={computerChoice.name} />
+                <img
+                  className="imageModal"
+                  src={computerChoice.src}
+                  alt={computerChoice.name}
+                />
               </div>
             </div>
           )}
+          <span className="round">{round}</span>
         </div>
-
-        <span className="round">{round}</span>
       </Modal>
     </div>
   );
