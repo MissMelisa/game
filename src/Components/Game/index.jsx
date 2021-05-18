@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import Modal from "react-modal";
 import Choice from "../Choice";
 
 import "./styles.css";
@@ -27,7 +28,7 @@ const options = [
 
 function getComputerChoice() {
   let computerChoice = options[Math.floor(Math.random() * 3)];
-  return computerChoice.name;
+  return computerChoice;
 }
 
 function obtainResult(userChoice, computerChoice) {
@@ -48,16 +49,24 @@ function Game() {
   const [userChoice, setUserChoice] = useState("");
   const [round, setRound] = useState();
   const [computerChoice, setComputerChoice] = useState();
+  const [modalIsOpen, setIsOpen] = useState(false);
 
+  function closeModal() {
+    setIsOpen(false);
+  }
+  function openModal() {
+    setIsOpen(true);
+  }
   function handleOnClickChoice(choice) {
     setUserChoice(choice);
+    openModal();
   }
 
   useEffect(() => {
     if (userChoice) {
       const computerNewChoice = getComputerChoice();
       console.log(computerNewChoice);
-      const result = obtainResult(userChoice, computerNewChoice);
+      const result = obtainResult(userChoice, computerNewChoice.name);
 
       setRound(result);
 
@@ -78,12 +87,29 @@ function Game() {
           />
         ))}
       </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Result"
+      >
+        <div>
+          <button onClick={closeModal}>close</button>
+          {computerChoice && (
+            <div>
+              <div>
+                <span>You chose:{userChoice}</span>
+                {/* <img src={} alt={userChoice} /> */}
+              </div>
+              <div>
+                <span>Computer chose: {computerChoice.name}</span>
+                <img src={computerChoice.src} alt={computerChoice.name} />
+              </div>
+            </div>
+          )}
+        </div>
 
-      <div>
-        {computerChoice && <span>Computer chose: {computerChoice}</span>}
-      </div>
-
-      <span className="round">{round}</span>
+        <span className="round">{round}</span>
+      </Modal>
     </div>
   );
 }
