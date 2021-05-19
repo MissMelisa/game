@@ -36,7 +36,7 @@ function obtainResult(userChoice, computerChoice) {
     return "It's draw!";
   } else if (
     (computerChoice === "paper" && userChoice === "scissor") ||
-    (computerChoice === "paper" && userChoice === "rock") ||
+    (computerChoice === "rock" && userChoice === "paper") ||
     (computerChoice === "scissor" && userChoice === "rock")
   ) {
     return "You win!";
@@ -47,9 +47,16 @@ function obtainResult(userChoice, computerChoice) {
 
 function Game() {
   const [userChoice, setUserChoice] = useState();
+
   const [round, setRound] = useState();
+
   const [computerChoice, setComputerChoice] = useState();
+
   const [modalIsOpen, setIsOpen] = useState(false);
+
+  const [scoreUser, setScoreUser] = useState(0);
+
+  const [scoreComputer, setComputerScore] = useState(0);
 
   function closeModal() {
     setIsOpen(false);
@@ -71,6 +78,16 @@ function Game() {
       const computerNewChoice = getComputerChoice();
 
       const result = obtainResult(userChoice.name, computerNewChoice.name);
+      if (result === "You win!") {
+        setScoreUser((prevState) => prevState + 1);
+        setComputerScore((prevState) => prevState);
+      } else if (result === "You lost!") {
+        setComputerScore((prevState) => prevState + 1);
+        setScoreUser((prevState) => prevState);
+      } else {
+        setScoreUser((prevState) => prevState);
+        setComputerScore((prevState) => prevState);
+      }
 
       setRound(result);
 
@@ -80,8 +97,15 @@ function Game() {
 
   return (
     <div className="containerGame">
-      <h2>Player 1</h2>
+      <span
+        className="scoreSpan"
+        href="https://fonts.googleapis.com/css2?family=Grandstander:wght@500&family=Literata:wght@300&display=swap"
+        rel="stylesheet"
+      >
+        Score: {scoreUser} vs {scoreComputer}
+      </span>
       <span>Choose an option</span>
+
       <div className="imagesContainer">
         {options.map((option) => (
           <Choice
