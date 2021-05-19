@@ -1,5 +1,7 @@
 import Modal from "react-modal";
 
+import "./styles.css";
+
 function GameResult({
   modalIsOpen,
   closeModal,
@@ -18,16 +20,24 @@ function GameResult({
         {computerChoice && (
           <div className="modalContainer">
             <div>
-              <span>You chose:{userChoice.name}</span>
+              <span
+                href="https://fonts.googleapis.com/css2?family=Grandstander:wght@500&display=swap"
+                rel="stylesheet"
+                className="choiceSpan"
+              >
+                You chose:"{userChoice.name}"
+              </span>
               <img
                 className="imageModal"
                 src={userChoice.src}
                 alt={userChoice.name}
               />
             </div>
-            <span> VS</span>
+            <span className="spanVs"> VS</span>
             <div>
-              <span>Computer chose: {computerChoice.name}</span>
+              <span className="choiceSpan">
+                Computer chose: "{computerChoice.name}"
+              </span>
               <img
                 className="imageModal"
                 src={computerChoice.src}
@@ -37,8 +47,10 @@ function GameResult({
           </div>
         )}
       </div>
-      <div className="buttonNewGame">
-        <button onClick={closeModal}>New Game</button>
+      <div className="buttonContainer">
+        <button className="buttonNewGame" onClick={closeModal}>
+          New Game
+        </button>
       </div>
     </Modal>
   );
