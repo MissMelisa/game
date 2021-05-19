@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import Modal from "react-modal";
 import Choice from "../Choice";
+import GameResult from "../GameResult";
 
 import "./styles.css";
 
@@ -27,7 +27,7 @@ const options = [
 ];
 
 function getComputerChoice() {
-  let computerChoice = options[Math.floor(Math.random() * 3)];
+  let computerChoice = options[Math.floor(Math.random() * options.length)];
   return computerChoice;
 }
 
@@ -53,6 +53,9 @@ function Game() {
 
   function closeModal() {
     setIsOpen(false);
+    setUserChoice();
+    setRound();
+    setComputerChoice();
   }
   function openModal() {
     setIsOpen(true);
@@ -60,13 +63,13 @@ function Game() {
   function handleOnClickChoice(choice) {
     setUserChoice(choice);
 
-    openModal();
+    setIsOpen(true);
   }
 
   useEffect(() => {
     if (userChoice) {
       const computerNewChoice = getComputerChoice();
-      console.log(computerNewChoice);
+
       const result = obtainResult(userChoice.name, computerNewChoice.name);
 
       setRound(result);
@@ -88,39 +91,13 @@ function Game() {
           />
         ))}
       </div>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Result"
-      >
-        <div>
-          <span className="round">{round}</span>
-          {computerChoice && (
-            <div className="modalContainer">
-              <div>
-                <span>You chose:{userChoice.name}</span>
-                <img
-                  className="imageModal"
-                  src={userChoice.src}
-                  alt={userChoice.name}
-                />
-              </div>
-              <span> VS</span>
-              <div>
-                <span>Computer chose: {computerChoice.name}</span>
-                <img
-                  className="imageModal"
-                  src={computerChoice.src}
-                  alt={computerChoice.name}
-                />
-              </div>
-            </div>
-          )}
-        </div>
-        <div className="buttonNewGame">
-          <button onClick={closeModal}>New Game</button>
-        </div>
-      </Modal>
+      <GameResult
+        userChoice={userChoice}
+        computerChoice={computerChoice}
+        round={round}
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+      />
     </div>
   );
 }
