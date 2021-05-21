@@ -20,13 +20,7 @@ function GameResult({
         {computerChoice && (
           <div className="modalContainer">
             <div>
-              <span
-                href="https://fonts.googleapis.com/css2?family=Grandstander:wght@500&display=swap"
-                rel="stylesheet"
-                className="choiceSpan"
-              >
-                You chose:"{userChoice.name}"
-              </span>
+              <span className="choiceSpan">You chose:"{userChoice.name}"</span>
               <img
                 className="imageModal"
                 src={userChoice.src}

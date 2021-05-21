@@ -58,7 +58,7 @@ function Game() {
 
   const [scoreComputer, setComputerScore] = useState(0);
 
-  function closeModal() {
+  function resetGame() {
     setIsOpen(false);
     setUserChoice();
     setRound();
@@ -95,11 +95,7 @@ function Game() {
 
   return (
     <div className="containerGame">
-      <span
-        className="scoreSpan"
-        href="https://fonts.googleapis.com/css2?family=Grandstander:wght@500&family=Literata:wght@300&display=swap"
-        rel="stylesheet"
-      >
+      <span className="scoreSpan">
         Score: {scoreUser} vs {scoreComputer}
       </span>
       <span>Choose an option</span>
@@ -118,7 +114,7 @@ function Game() {
         computerChoice={computerChoice}
         round={round}
         modalIsOpen={modalIsOpen}
-        closeModal={closeModal}
+        closeModal={resetGame}
       />
     </div>
   );
