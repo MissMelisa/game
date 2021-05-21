@@ -64,9 +64,7 @@ function Game() {
     setRound();
     setComputerChoice();
   }
-  function openModal() {
-    setIsOpen(true);
-  }
+
   function handleOnClickChoice(choice) {
     setUserChoice(choice);
 
