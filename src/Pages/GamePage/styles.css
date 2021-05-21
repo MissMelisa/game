@@ -1,0 +1,14 @@
+.containerGamePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.imageLogo {
+  width: 100px;
+  height: 100px;
+}
+.containerHead {
+  display: flex;
+  flex-direction: row;
+}
