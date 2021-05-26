@@ -13,10 +13,7 @@
   padding-top: 30px;
   font-weight: bolder;
 }
-.imageModal {
-  height: 400px;
-  width: 450px;
-}
+
 .buttonContainer {
   display: flex;
   align-items: center;
@@ -28,14 +25,8 @@
   padding: 10px;
   font-weight: bold;
 }
-.choiceSpan {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  font-family: "Grandstander", cursive;
-  margin-top: 8px;
-}
+
 .spanVs {
   padding: 40px;
+  font-weight: bolder;
 }

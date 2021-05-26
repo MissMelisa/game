@@ -1,0 +1,13 @@
+.choiceSpan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-family: "Literata", serif;
+    margin-top: 8px;
+  }
+
+  .imageModal {
+    height: 400px;
+    width: 450px;
+  }

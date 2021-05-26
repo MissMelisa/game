@@ -36,7 +36,7 @@ function obtainResult(userChoice, computerChoice) {
     return "It's draw!";
   } else if (
     (computerChoice === "paper" && userChoice === "scissor") ||
-    (computerChoice === "paper" && userChoice === "rock") ||
+    (computerChoice === "rock" && userChoice === "paper") ||
     (computerChoice === "scissor" && userChoice === "rock")
   ) {
     return "You win!";
@@ -47,19 +47,24 @@ function obtainResult(userChoice, computerChoice) {
 
 function Game() {
   const [userChoice, setUserChoice] = useState();
+
   const [round, setRound] = useState();
+
   const [computerChoice, setComputerChoice] = useState();
+
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  function closeModal() {
+  const [scoreUser, setScoreUser] = useState(0);
+
+  const [scoreComputer, setComputerScore] = useState(0);
+
+  function resetGame() {
     setIsOpen(false);
     setUserChoice();
     setRound();
     setComputerChoice();
   }
-  function openModal() {
-    setIsOpen(true);
-  }
+
   function handleOnClickChoice(choice) {
     setUserChoice(choice);
 
@@ -71,6 +76,13 @@ function Game() {
       const computerNewChoice = getComputerChoice();
 
       const result = obtainResult(userChoice.name, computerNewChoice.name);
+      if (result === "You win!") {
+        setScoreUser((prevState) => prevState + 1);
+        
+      } else if (result === "You lost!") {
+        setComputerScore((prevState) => prevState + 1);
+       
+      } 
 
       setRound(result);
 
@@ -80,8 +92,11 @@ function Game() {
 
   return (
     <div className="containerGame">
-      <h2>Player 1</h2>
+      <span className="scoreSpan">
+        Score: {scoreUser} vs {scoreComputer}
+      </span>
       <span>Choose an option</span>
+
       <div className="imagesContainer">
         {options.map((option) => (
           <Choice
@@ -96,7 +111,7 @@ function Game() {
         computerChoice={computerChoice}
         round={round}
         modalIsOpen={modalIsOpen}
-        closeModal={closeModal}
+        closeModal={resetGame}
       />
     </div>
   );
