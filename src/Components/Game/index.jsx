@@ -78,14 +78,11 @@ function Game() {
       const result = obtainResult(userChoice.name, computerNewChoice.name);
       if (result === "You win!") {
         setScoreUser((prevState) => prevState + 1);
-        setComputerScore((prevState) => prevState);
+        
       } else if (result === "You lost!") {
         setComputerScore((prevState) => prevState + 1);
-        setScoreUser((prevState) => prevState);
-      } else {
-        setScoreUser((prevState) => prevState);
-        setComputerScore((prevState) => prevState);
-      }
+       
+      } 
 
       setRound(result);
 
